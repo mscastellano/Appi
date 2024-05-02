@@ -11,29 +11,29 @@ import Swal from 'sweetalert2';
   styleUrl: './listar-cliente.component.css'
 })
 export class ListarClienteComponent {
-[x: string]: any;
-  constructor( public _clienteService: ClienteServiceService, private router:Router ){}
-  clientes:Clientes[]
+  [x: string]: any;
+  constructor(public _clienteService: ClienteServiceService, private router: Router) { }
+  clientes: Clientes[]
 
-  ngOnInit(){
+  ngOnInit() {
     this.getClients();
   }
 
 
-  getClients(){
+  getClients() {
 
     this._clienteService.getClients().subscribe(
-     (datos)=>{
-      this.clientes=datos;
-      console.log(this.clientes);
+      (datos) => {
+        this.clientes = datos;
+        console.log(this.clientes);
 
-     }
+      }
     )
   }
- 
 
-  public eliminarCliente(Id:number){
-    this._clienteService.deleteClient(Id).subscribe({next:(datos)=>{console.log("Eliminado")},});
+
+  public eliminarCliente(Id: number) {
+    this._clienteService.deleteClient(Id).subscribe({ next: (datos) => { console.log("Eliminado") }, });
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -44,30 +44,30 @@ export class ListarClienteComponent {
       confirmButtonText: "Sí, eliminarlo"
     }).then((result) => {
       if (result.isConfirmed) {
-        
+
         Swal.fire({
           title: "Deleted!",
           icon: "success"
         });
         window.location.reload();
-      }else{
-       
+      } else {
+
         console.log("Error al eliminar cliente")
       }
-   
+
     });
     //window.location.reload();
   }
 
-  editarCliente(Id:number){
-    this.router.navigate(['actualizar-cliente',Id]);
+  editarCliente(Id: number) {
+    this.router.navigate(['actualizar-cliente', Id]);
   }
 
-  principal(){
+  principal() {
     this.router.navigate(['/listar-clientes'])
   }
 
-  agregarcliente(){
+  agregarcliente() {
     this.router.navigate(['/guardar-cliente'])
   }
 

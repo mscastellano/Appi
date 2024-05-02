@@ -2,7 +2,8 @@
     <form (ngSubmit)="actualizarCliente(cliente.Id)" #clienteForm="ngForm">
         <div class="mb-3">
             <label for="Nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="Nombre" id="Nombre" [(ngModel)]="cliente.Nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚ\s]+">
+            <input type="text" class="form-control" name="Nombre" id="Nombre" [(ngModel)]="cliente.Nombre" required
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ\s]+">
         </div>
         <div class="mb-3">
             <label for="Apellido" class="form-label">Apellido</label>

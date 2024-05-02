@@ -12,50 +12,34 @@
         <form (ngSubmit)="guardarCliente()" #clienteForm="ngForm">
             <div class="mb-3">
                 <label for="Nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="Nombre" id="Nombre" [(ngModel)]="clientes.Nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚ\s]+">
-                <div *ngIf="clienteForm.controls['Nombre'].invalid && clienteForm.controls['Nombre'].touched"
-                    class="invalid-feedback">
-                    El nombre es requerido y solo se permiten letras.
-                </div>
+                <input type="text" class="form-control" name="Nombre" id="Nombre" [(ngModel)]="clientes.Nombre" required
+                    pattern="[a-zA-ZáéíóúÁÉÍÓÚ\s]+">
+
             </div>
             <div class="mb-3">
                 <label for="Apellido" class="form-label">Apellido</label>
                 <input type="text" class="form-control" name="Apellido" id="Apellido" [(ngModel)]="clientes.Apellido"
                     required pattern="[a-zA-ZáéíóúÁÉÍÓÚ\s]+">
-                <div *ngIf="clienteForm.controls['Apellido'].invalid && clienteForm.controls['Apellido'].touched"
-                    class="invalid-feedback">
-                    El apellido es requerido y solo se permiten letras.
-                </div>
+
             </div>
             <div class="mb-3">
                 <label for="Cedula" class="form-label">Cedula</label>
                 <input type="text" class="form-control" name="Cedula" id="Cedula" [(ngModel)]="clientes.Cedula" required
                     pattern="^[0-9]{10}$">
-                <div *ngIf="clienteForm.controls['Cedula'].invalid && clienteForm.controls['Cedula'].touched"
-                    class="invalid-feedback">
-                    La cédula debe tener exactamente 10 dígitos numéricos.
-                </div>
+
             </div>
             <div class="mb-3">
                 <label for="Telefono" class="form-label">Telefono</label>
                 <input type="text" class="form-control" name="Telefono" id="Telefono" [(ngModel)]="clientes.Telefono"
                     required pattern="^09[0-9]{8}$">
-                <div *ngIf="clienteForm.controls['Telefono'].invalid && clienteForm.controls['Telefono'].touched"
-                    class="invalid-feedback">
-                    El teléfono debe comenzar con '09' y tener 10 dígitos numéricos.
-                </div>
+
             </div>
             <div *ngIf="clienteForm.invalid" class="alert alert-warning" role="alert">
                 Por favor, complete los campos correctamente antes de guardar.
             </div>
-            <button type="submit" class="guardarCliente" >Actualizar</button>
+            <button type="submit" class="guardarCliente">Actualizar</button>
         </form>
     </div>
-    
-
-        <!-- tengo agregar mensaje advertencia, 
-        windows.reload -->
-
 
 </body>
 
