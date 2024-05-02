@@ -1,0 +1,58 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   </head>
+   <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/listar-clientes">Clientes</a>
+        
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            
+                <button  class="btn btn-primary" (click)="agregarcliente()">Agregar Cliente
+            
+                </button>             
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="cantainer">
+        <table class="table table-bordered">
+      
+            <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Teléfono</th>
+                <th>Acciones</th> 
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cli of clientes">
+                <td>{{ cli.Nombre }}</td>
+                <td>{{ cli.Apellido }}</td>
+                <td>{{ cli.Cedula }}</td>
+                <td>{{ cli.Telefono }}</td>
+                <td>
+                <button class="btn btn-danger" (click)="eliminarCliente(cli.Id)">Eliminar</button>
+                <button class="btn btn-primary" (click)="editarCliente(cli.Id)">Actualizar</button>
+                <!-- <button class="btn " (click)="eliminarProducto(producto.id_producto)">Eliminar</button>  -->
+               
+                </td> 
+            </tr>
+            </tbody>
+        </table>
+      </div>
+   </body>
+   </html>
+   
+   
+ 
+    
