@@ -1,5 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="actualizarCliente(cliente.Id)" #clienteForm="ngForm">
+    <form (ngSubmit)="confirmarActualizacion(cliente.Id)" #clienteForm="ngForm">
         <div class="mb-3">
             <label for="Nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" name="Nombre" id="Nombre" [(ngModel)]="cliente.Nombre" required
@@ -24,5 +24,7 @@
             Por favor, complete los campos correctamente antes de guardar.
         </div>
         <button type="submit" class="guardarCliente">Actualizar</button>
+        
+        
     </form>
 </div>

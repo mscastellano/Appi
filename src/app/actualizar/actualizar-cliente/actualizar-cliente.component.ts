@@ -98,23 +98,13 @@ export class ActualizarClienteComponent implements OnInit {
     // Una vez que la actualización se haya realizado correctamente, muestra la alerta de éxito
     this._clienteService.updateClient(this.cliente, Id).subscribe(
       (Actualizar) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'La actualización se ha realizado con éxito',
-          showConfirmButton: false,
-          timer: 1500
-        });
+     
         console.log("Actualizada", this.actualizarCliente);
         //redirigir
         this.principal();
       },
       (error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Vaya",
-          text: "Algo ha salido mal",
-        });
+  
         console.log("Error", error);
       }
     );
@@ -123,6 +113,22 @@ export class ActualizarClienteComponent implements OnInit {
 
   principal() {
     this.router.navigate(['/listar-clientes']);
+  }
+
+  confirmarActualizacion(id: number) {
+    Swal.fire({
+      title: "¿Quieres guardar los cambios?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: "No Guardar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.actualizarCliente(id);
+      } else if (result.isDenied) {
+        Swal.fire("", "", "info");
+      }
+    });
   }
 
 
