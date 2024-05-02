@@ -1,10 +1,8 @@
-/* Estilos para el formulario */
 .form-label {
     font-weight: bold;
-    
-  }
-  
-  .form-control {
+}
+
+.form-control {
     display: block;
     width: 50%;
     padding: 0.375rem 0.75rem;
@@ -18,17 +16,15 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-align: center;
     margin-left: 25%;
-   margin-top: 5px;
-  }
-  
-  /* Estilos para los mensajes de error */
-  .invalid-feedback {
+    margin-top: 5px;
+}
+
+.invalid-feedback {
     color: #dc3545;
     font-size: 80%;
-  }
-  
-  /* Estilos para el mensaje de advertencia */
-  .alert-warning {
+}
+
+.alert-warning {
     margin-top: 40px;
     color: #856404;
     background-color: #fff3cd;
@@ -37,10 +33,9 @@
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-  }
-  
-  /* Estilos para el botón de guardar */
-  .guardarCliente {
+}
+
+.guardarCliente {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
@@ -49,26 +44,29 @@
     line-height: 1.5;
     border-radius: 0.25rem;
     cursor: pointer;
-  }
-  
-  .guardarCliente:disabled {
+}
+
+.guardarCliente:disabled {
     background-color: #6c757d;
     border-color: #6c757d;
     cursor: not-allowed;
-  }
-  
-  .container{
+}
+
+.container {
     margin-top: 30px;
     margin-bottom: 34px;
     border-color: #495057;
     border-radius: 25px;
-  }
-  form{
+}
+
+form {
     text-align: center;
-  }
-  input{
+}
+
+input {
     text-align: center;
-  }
-  label{
+}
+
+label {
     margin: 34px 23px 45px 45px;
-  }
+}

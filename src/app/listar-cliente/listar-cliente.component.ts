@@ -49,12 +49,12 @@ export class ListarClienteComponent {
           title: "Deleted!",
           icon: "success"
         });
-        
+        window.location.reload();
       }else{
        
         console.log("Error al eliminar cliente")
       }
-      window.location.reload();
+   
     });
     //window.location.reload();
   }
