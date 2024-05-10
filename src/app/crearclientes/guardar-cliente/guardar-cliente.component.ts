@@ -13,9 +13,9 @@ import Swal from 'sweetalert2';
 export class GuardarClienteComponent {
 
   clientes:Clientes = new Clientes;
-  //contructor
+
   constructor( public _clienteService: ClienteServiceService,private router:Router ){}
-  //metodo parar crear
+
   public guardarCliente(){
     if(/\d/.test(this.clientes.Apellido)) {
       Swal.fire({
@@ -23,24 +23,24 @@ export class GuardarClienteComponent {
         title: 'Error',
         text: 'Apellido no puede contener números'
       });
-      return; // Salir de la función si el apellido contiene números
+      return; 
     }
-      // Verificar si el apellido contiene números
+      
       if(/\d/.test(this.clientes.Nombre)) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: 'Nombre no puede contener números'
         });
-        return; // Salir de la función si el apellido contiene números
+        return; 
       }
       if(/\D/.test(this.clientes.Cedula)) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Cedula solo puede contener números'
+          text: 'cedula solo puede contener números'
         });
-        return; // Salir de la función si el teléfono contiene caracteres que no sean números
+        return; 
       }
       if (this.clientes.Cedula.length !== 10) {
         Swal.fire({
@@ -48,17 +48,17 @@ export class GuardarClienteComponent {
           title: 'Error',
           text: 'La cédula debe tener exactamente 10 dígitos'
         });
-        return; // Salir de la función si la cédula no tiene 10 dígitos
+        return; 
       }
     
-      // Verificar si la cédula no es un número repetido
+      
       if (/^(\d)\1{9}$/.test(this.clientes.Cedula)) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: 'La cédula no puede ser un número repetido'
         });
-        return; // Salir de la función si la cédula es un número repetido
+        return;
       }
       if(/\D/.test(this.clientes.Telefono)) {
         Swal.fire({
@@ -66,7 +66,7 @@ export class GuardarClienteComponent {
           title: 'Error',
           text: 'El teléfono solo puede contener números'
         });
-        return; // Salir de la función si el teléfono contiene caracteres que no sean números
+        return; 
       }
       if (!/^09\d{8}$/.test(this.clientes.Telefono)) {
         Swal.fire({
@@ -74,9 +74,18 @@ export class GuardarClienteComponent {
           title: 'Error',
           text: 'El teléfono debe comenzar con "09" y tener 10 dígitos'
         });
-        return; // Salir de la función si el teléfono no cumple con el formato especificado
+        return; 
       }
-      
+      if (this.validarCedula(this.clientes.Cedula)) {
+        
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'La cédula ingresada no es válida'
+        });
+        return;
+      }
   
     this._clienteService.createClient(this.clientes).subscribe({next:(datos)=>{
       Swal.fire({
@@ -93,4 +102,41 @@ export class GuardarClienteComponent {
   listarClientes(): void {
     this.router.navigate(['listar-clientes']);
   }
+
+  validarCedula(Cedula: string): boolean {
+    
+    if (Cedula.length !== 10) {
+      return false;
+    }
+  
+    const provincia = parseInt(Cedula.substring(0, 2));
+    if (!(provincia >= 1 && provincia <= 24) && !(provincia === 17 || provincia === 20)) {
+      return false;
+    }
+  
+   
+    const tercerDigito = parseInt(Cedula.charAt(2));
+    if (tercerDigito >= 6) {
+      return false;
+    }
+  
+    const coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+    let suma = 0;
+    for (let i = 0; i < coeficientes.length; i++) {
+      let valor = parseInt(Cedula.charAt(i)) * coeficientes[i];
+      if (valor >= 10) {
+        valor -= 9;
+      }
+      suma += valor;
+    }
+    const resultado = suma % 10 === 0 ? 0 : 10 - (suma % 10);
+  
+    const ultimoDigito = parseInt(Cedula.charAt(9));
+    if (ultimoDigito !== resultado) {
+      return false;
+    }
+  
+    return true;
+  }
+  
 }

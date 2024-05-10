@@ -10,6 +10,7 @@ import { Clientes } from './clientes';
   providedIn: 'root'
 })
 export class ClienteServiceService {
+  getClientByCedula: any;
   obtenerPorId(id_producto: any) {
     throw new Error('Method not implemented.');
   }

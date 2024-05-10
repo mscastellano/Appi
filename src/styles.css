@@ -5,10 +5,13 @@
     margin: 0 auto;
     padding: 20px;
 }
+.element.style {
+    text-align: center;
+  }
 
 .header {
     background-color: #343a40;
-    color: #fff;
+    color: #857acf;
     padding: 10px 0;
     text-align: center;
 }

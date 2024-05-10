@@ -71,7 +71,5 @@ export class ListarClienteComponent {
     this.router.navigate(['/guardar-cliente'])
   }
 
-
-
 }
 

@@ -44,4 +44,8 @@ form {
     border-color: #6c757d;
     cursor: not-allowed;
   }
+
+  .swal-button{
+    background-color: yellow;
+  }
   

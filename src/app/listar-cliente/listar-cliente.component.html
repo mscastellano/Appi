@@ -3,22 +3,13 @@
    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
    </head>
    <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="/listar-clientes">Clientes</a>
-        
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-            
-                <button  class="btn btn-primary" (click)="agregarcliente()">Agregar Cliente
-            
-                </button>             
-             
-            </ul>
-          </div>
         </div>
       </nav>
 
@@ -41,14 +32,23 @@
                 <td>{{ cli.Cedula }}</td>
                 <td>{{ cli.Telefono }}</td>
                 <td>
-                <button class="btn btn-danger" (click)="eliminarCliente(cli.Id)">Eliminar</button>
-                <button class="btn btn-primary" (click)="editarCliente(cli.Id)">Actualizar</button>
+                <button class="btn btn-danger" (click)="eliminarCliente(cli.Id)"><i class="bi bi-trash3"></i></button>
+                <button class="btn btn-primary" (click)="editarCliente(cli.Id)"><i class="bi bi-pencil-square"></i></button>
                 <!-- <button class="btn " (click)="eliminarProducto(producto.id_producto)">Eliminar</button>  -->
                
                 </td> 
             </tr>
             </tbody>
         </table>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          
+              <button  class="btn btn-primary" (click)="agregarcliente()">Agregar Cliente
+          
+              </button>             
+           
+          </ul>
+        </div>
       </div>
    </body>
    </html>
